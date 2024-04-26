@@ -1,0 +1,233 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Health Care Center</title>
+    <link rel="stylesheet" type="text/css" href="/static/style.css">
+
+    <link rel="main" href="main.py">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+
+
+    <link rel="stylesheet" href="fontawesome-free-5.15.3-web/css/all.min.css">
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/swiper/swiper-bundle.min.css"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Kode+Mono:wght@400..600&family=Orbitron:wght@400..900&display=swap" rel="stylesheet">
+
+  </head>
+<body>
+    <!-- Navbar -->
+    
+    <nav class="Navbar">
+        <img src="/static/logo.jpg" id="logo" alt="">
+
+        
+        <div class="icons">
+            <div id="menubar" class="fas fa-bars"></div>
+
+            <a href="/templates/about.html">About</a>
+            <a href="/templates/blog.html">Blogs</a>
+            <a href="/templates/contact.html">Contact</a>
+
+        </div>
+    </nav>
+
+
+<!-- main form of page -->
+
+        
+        <div class="background-image">
+        <div class="background-content"> <h1>Symptoms Based Medicine <br> Recommended System</h1>
+        <p>Our Webpage is a medicine recommended system that utilizes machine learning techniques to analyse input data and recommended the medicines to user based on their symptoms. Flask is used to build a user-friendly web interface where users can input their data and receive medicine recommendation. </p>
+        <a href="/templates/about.html">Read more</a>
+     </div>
+ </div>
+
+
+
+<div class="container my-4 mt-4" style="background: transparent; color: black; border-radius: 15px; padding: 40px;">
+    <form action="/predict" method="post">
+        <div class="form-group">
+            <label style="color: white; position: relative;" for="symptoms">Select Symptoms:</label>
+ <!-- Display the transcribed text here -->
+<div name="mysysms" id="transcription" style="color:black; margin-top: 5px;"> <table>
+    <tr>
+      <td>
+        <input type="text" class="form-control" style="position: relative; width: 1200px; height:3rem; background-color: #ADCCC3;" id="symptoms" name="symptoms" placeholder=" type systems such as itching, sleeping, aching etc" >
+      </td>
+      <td>
+        <button type="button" id="startSpeechRecognition" class="btn btn-primary" style="margin-left:5px;border:1px solid white; border-radius:20px; background-color: white; color: white;  position: relative; margin-top: 5px; margin-right: 10px; margin-left: 10px;" >
+          <img class="microphone-icon" src="/static/mic1.jpg" alt="microphone" width="25px" height="25px" style="border-radius: 100px;" ></button>
+      </td>
+    </tr>
+  </table>
+
+
+        </div>
+        
+        <br>
+
+        <button type="submit" class="btn btn-danger btn-lg" style="width: 20%; padding: 10px; margin-bottom: 5px; color: black; background-color: #BEADC4; margin-left: 40%; font-weight: bolder; font-family:Orbitron, sans-serif; ">Suggest</button>
+    </form>
+</div>
+
+
+
+<!-- Results -->
+<h1 class="text-center my-4 mt-4">Our AI System Results</h1>
+<div class="container">
+
+    <div class="result-container" style="padding: 10px 10px;">
+        <!-- Buttons to toggle display -->
+     <button class="toggle-button" data-bs-toggle="modal" data-bs-target="#diseaseModal" style="padding:4px;  margin: 5px 40px 5px 0; font-size:20px;font-weight:600; font-family:Orbitron, sans-serif; border-radius: 30px; width: 150px; height: 100px; background-color:#78959E;color:black;">Disease</button>
+        <button class="toggle-button" data-bs-toggle="modal" data-bs-target="#descriptionModal" style="padding:4px; margin: 5px 40px 5px 0; font-size:20px;font-weight:600; font-family:Orbitron, sans-serif; border-radius:30px; width: 150px; height: 100px; background:#78959E ;color:black;">Description</button>
+        <button class="toggle-button" data-bs-toggle="modal" data-bs-target="#precautionModal" style="padding:4px; margin: 5px 40px 5px 0; font-size:20px;font-weight:600; font-family:Orbitron, sans-serif; border-radius:30px; width: 150px; height: 100px; background:#78959E ;color:black;">Precaution</button>
+     <button class="toggle-button" data-bs-toggle="modal" data-bs-target="#medicationsModal" style="padding:4px; margin: 5px 40px 5px 0; font-size:20px;font-weight:600; font-family:Orbitron, sans-serif;border-radius:30px; 
+      width: 150px; height: 100px; background:#78959E;color:black;">Medications</button>
+        <button class="toggle-button" data-bs-toggle="modal" data-bs-target="#workoutsModal" style="padding:4px; margin: 5px 40px 5px 0; font-size:20px;font-weight:600; font-family:Orbitron, sans-serif; border-radius:30px; width: 150px; height: 100px; background:#78959E ;color:black;">Workouts</button>
+        <button class="toggle-button" data-bs-toggle="modal" data-bs-target="#dietsModal" style="padding:4px; margin: 5px 40px 5px 0; font-size:20px;font-weight:600; font-family:Orbitron, sans-serif; border-radius:30px; width: 150px; height: 100px;  background:#78959E;color:black;">Diets</button>
+    </div>
+</div>
+
+
+<!-- Disease Modal -->
+    <div class="modal fade" id="diseaseModal" tabindex="-1" aria-labelledby="diseaseModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header" style="background-color: #020606; color:white;"> <!-- Set header background color inline -->
+                    <h5 class="modal-title" id="diseaseModalLabel">Predicted Disease</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body" style="background-color: modal-body-color;"> <!-- Set modal body background color inline -->
+                    <p style="height: 450px; font-size: x-large; margin-right: 0rem;">{{ predicted_disease }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Description Modal -->
+    <div class="modal fade" id="descriptionModal" tabindex="-1" aria-labelledby="descriptionModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header" style="background-color: #020606; color:white;">
+                    <h5 class="modal-title" id="descriptionModalLabel">Description</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p style="height: 450px; font-size: x-large; margin-right: 0rem;">{{ dis_des }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<!-- Precaution Modal -->
+    <div class="modal fade" id="precautionModal" tabindex="-1" aria-labelledby="precautionModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header" style="background-color: #020606; color:white;">
+                    <h5 class="modal-title" id="precautionModalLabel">Precaution</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <ul>
+                        <p style="height: 450px; font-size: x-large; margin-right: 0rem;">{{ my_precautions }}</p> 
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <!-- Medications Modal -->
+    <div class="modal fade" id="medicationsModal" tabindex="-1" aria-labelledby="medicationsModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header" style="background-color: #020606; color:white;">
+                    <h5 class="modal-title" id="medicationsModalLabel">Medications</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <ul>
+                        <p style="height: 450px; font-size: x-large; margin-right: 0rem;">{{ medications }}</p>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Workouts Modal -->
+    <div class="modal fade" id="workoutsModal" tabindex="-1" aria-labelledby="workoutsModalLabel" aria-hidden="true">
+        <div class="modal-dialog" >
+            <div class="modal-content">
+                <div class="modal-header" style="background-color: #020606; color:white;">
+                    <h5 class="modal-title" id="workoutsModalLabel">Workouts</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <ul>
+                        <p style="height: 450px; font-size: x-large; margin-right: 0rem;">{{ workout }}</p>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Diets Modal -->
+    <div class="modal fade" id="dietsModal" tabindex="-1" aria-labelledby="dietsModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header" style="background-color: #020606; color:white;">
+                    <h5 class="modal-title" id="dietsModalLabel">Diets</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <ul>
+                        <p style="height: 450px; font-size: x-large; margin-right: 0rem;">{{ rec_diet }}</p>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+
+
+        <script>
+    const startSpeechRecognitionButton = document.getElementById('startSpeechRecognition');
+    const transcriptionDiv = document.getElementById('transcription');
+
+    startSpeechRecognitionButton.addEventListener('click', startSpeechRecognition);
+
+    function startSpeechRecognition() {
+        const recognition = new webkitSpeechRecognition(); // Use webkitSpeechRecognition for compatibility
+
+        recognition.lang = 'en-US'; // Set the language for recognition
+
+        recognition.onresult = function (event) {
+            const result = event.results[0][0].transcript;
+            transcriptionDiv.textContent = result;
+        };
+
+        recognition.onend = function () {
+            console.log('Speech recognition ended.');
+        };
+
+        recognition.start();
+    }
+</script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+    
+    
+</body>
+
+</html>
